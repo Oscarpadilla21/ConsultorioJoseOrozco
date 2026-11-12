@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://consultoriojoseorozco.com/sitemap.xml
+Sitemap: https://consultoriojoseorozco.vercel.app/sitemap.xml

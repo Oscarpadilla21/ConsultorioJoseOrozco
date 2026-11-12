@@ -552,8 +552,16 @@ ul, ol {
   color: var(--color-primary);
 }
 
-.nav-link:hover::after {
+.nav-link:hover::after,
+.nav-link.is-active::after,
+.nav-link[aria-current="page"]::after {
   width: 100%;
+}
+
+.nav-link.is-active,
+.nav-link[aria-current="page"] {
+  color: var(--color-primary);
+  font-weight: 700;
 }
 
 .nav-link:focus-visible {
@@ -1181,6 +1189,22 @@ ul, ol {
   border: 1px solid var(--color-border);
 }
 
+.specialist-page-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+  max-width: var(--max-w-content);
+  margin: 0 auto;
+}
+
+@media (min-width: 1024px) {
+  .specialist-page-grid {
+    grid-template-columns: 1.4fr 1fr;
+    gap: var(--space-10);
+    align-items: start;
+  }
+}
+
 .specialist-quote {
   font-family: var(--font-display);
   font-size: 1.25rem;
@@ -1798,11 +1822,21 @@ ul, ol {
   .footer-top-grid {
     grid-template-columns: 1fr 1fr;
   }
+  .bento-card-featured,
+  .bento-card-regular {
+    grid-column: span 12;
+  }
+  .facilities-mosaic-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 768px) {
   .section-wrapper {
     padding: var(--space-16) 0;
+  }
+  .facilities-mosaic-grid {
+    grid-template-columns: 1fr;
   }
   .services-grid-6 {
     grid-template-columns: 1fr;
@@ -1849,6 +1883,222 @@ ul, ol {
   body {
     padding-bottom: 4.5rem;
   }
+}
+
+/* ==========================================================================
+   SUBPAGE & MULTI-PAGE ARCHITECTURE (Clean URLs & Deep Clinical Sections)
+   ========================================================================== */
+.subpage-hero {
+  padding: var(--space-16) 0 var(--space-12) 0;
+  background: linear-gradient(180deg, var(--color-bg-page) 0%, var(--color-primary-light) 100%);
+  border-bottom: 1px solid var(--color-primary-border);
+}
+
+.subpage-hero-inner {
+  max-width: 860px;
+}
+
+.breadcrumb-nav {
+  margin-bottom: var(--space-4);
+}
+
+.breadcrumb-list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.breadcrumb-list a {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.breadcrumb-list a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb-separator {
+  color: var(--color-slate-400);
+}
+
+.subpage-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4.5vw, 3.25rem);
+  font-weight: 700;
+  color: var(--color-text-dark);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  margin-bottom: var(--space-4);
+}
+
+.subpage-subtitle {
+  font-size: var(--font-size-lg);
+  line-height: 1.7;
+  color: var(--color-text-body);
+}
+
+/* Bento Services Layout */
+.bento-services-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+
+.bento-card-featured {
+  grid-column: span 6;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-card);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+
+.bento-card-featured:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-3px);
+}
+
+.bento-card-featured.highlight-cordales {
+  border-color: var(--color-primary-border);
+}
+
+.bento-card-featured.highlight-estomatologia {
+  border-color: var(--color-accent-border);
+}
+
+.bento-card-regular {
+  grid-column: span 6;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-card);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+
+.bento-card-regular:hover {
+  border-color: var(--color-primary-border);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+.service-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-3);
+  width: fit-content;
+}
+
+.badge-teal {
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary-border);
+}
+
+.badge-coral {
+  background: var(--color-accent-light);
+  color: var(--color-accent);
+  border: 1px solid var(--color-accent-border);
+}
+
+.service-meta-strip {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-3) 0;
+  margin: var(--space-3) 0;
+  border-top: 1px solid var(--color-border-subtle);
+  border-bottom: 1px solid var(--color-border-subtle);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.service-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.service-meta-item svg {
+  color: var(--color-primary);
+}
+
+/* Facilities Gallery */
+.facilities-mosaic-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+
+.facility-card-item {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+
+.facility-card-item:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-4px);
+}
+
+.facility-img-wrap {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--color-slate-900);
+}
+
+.facility-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.facility-card-item:hover .facility-img-wrap img {
+  transform: scale(1.03);
+}
+
+.facility-card-body {
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.facility-card-body h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text-dark);
+  margin-bottom: var(--space-2);
+}
+
+.facility-card-body p {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-body);
+  line-height: 1.6;
 }
 
 /* Reduced Motion Accessibility (WCAG 2.2 / 2.3.3) */

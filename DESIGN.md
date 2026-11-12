@@ -40,12 +40,35 @@ typography:
     fontWeight: 700
     lineHeight: 1.22
     letterSpacing: "-0.015em"
+  h2:
+    fontFamily: "Playfair Display, Georgia, serif"
+    fontSize: "1.875rem"
+    fontWeight: 700
+    lineHeight: 1.25
+  h3:
+    fontFamily: "Playfair Display, Georgia, serif"
+    fontSize: "1.5rem"
+    fontWeight: 600
+    lineHeight: 1.3
+  h4:
+    fontFamily: "Plus Jakarta Sans, sans-serif"
+    fontSize: "1.25rem"
+    fontWeight: 600
+    lineHeight: 1.4
   body:
     fontFamily: "Plus Jakarta Sans, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif"
     fontSize: "1rem"
     fontWeight: 400
     lineHeight: 1.65
     letterSpacing: "0em"
+  sm:
+    fontFamily: "Plus Jakarta Sans, sans-serif"
+    fontSize: "0.875rem"
+    fontWeight: 400
+  xs:
+    fontFamily: "Plus Jakarta Sans, sans-serif"
+    fontSize: "0.75rem"
+    fontWeight: 500
 rounded:
   xs: "4px"
   sm: "8px"
