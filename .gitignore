@@ -1,0 +1,7 @@
+# OS & Environment
+.DS_Store
+Thumbs.db
+*.log
+
+# Tool caches
+.impeccable/
