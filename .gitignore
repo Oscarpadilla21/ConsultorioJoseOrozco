@@ -7,3 +7,5 @@ Thumbs.db
 .impeccable/
 
 .vercel
+
+node_modules/
